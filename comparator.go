@@ -10,7 +10,7 @@ import (
 
 // Word estrutura para comparação entre palavras
 type Word struct {
-	word   string
+	text   string
 	degree float32
 }
 
@@ -20,8 +20,8 @@ func New(word string) *Word {
 }
 
 // IsLike retorna se duas palavras são semelhantes
-func (w *Word) IsLike(work string) bool {
-	return similar(w.word, work) >= w.degree
+func (w *Word) IsLike(text string) bool {
+	return similar(w.text, text) >= w.degree
 }
 
 func similar(word1 string, word2 string) float32 {
@@ -54,14 +54,14 @@ func similar(word1 string, word2 string) float32 {
 	return float32(counter / len(arr1))
 }
 
-func clean(word string) string {
-	w := strings.ToUpper(word)
-	w = strings.Trim(word, " ")
-	w = RemoveAcentos(word)
-	w = removeTrash(word)
-	w = strings.ToUpper(word)
+func clean(text string) string {
+	t := strings.ToUpper(text)
+	t = strings.Trim(text, " ")
+	t = RemoveAcentos(text)
+	t = removeTrash(text)
+	t = strings.ToUpper(text)
 
-	return w
+	return t
 }
 
 func isMn(r rune) bool {
@@ -94,9 +94,14 @@ func removeTrash(word string) string {
 }
 
 // RemoveAcentos remove acentos da string
-func RemoveAcentos(word string) string {
+func RemoveAcentos(text string) string {
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
-	n, _, _ := transform.String(t, word)
+	n, _, _ := transform.String(t, text)
 
 	return n
+}
+
+// RemoveAcentos remove acentos da string
+func (w *Word) RemoveAcentos() string {
+	return RemoveAcentos(w.text)
 }
