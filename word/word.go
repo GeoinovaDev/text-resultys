@@ -4,7 +4,7 @@ import (
 	"strings"
 	"unicode"
 
-	"git.resultys.com.br/lib/text/extract"
+	"git.resultys.com.br/lib/text"
 
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
@@ -114,6 +114,5 @@ func (w *Word) RemoveAcentos() string {
 // OnlyNumber extrai todos os numeros do texto
 // Retorna string
 func (w *Word) OnlyNumber() string {
-	arr := extract.New(w.text).Regex(`[0-9]+`).ToArray()
-	return strings.Join(arr, "")
+	return text.OnlyNumbers(w.text)
 }
