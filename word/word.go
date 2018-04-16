@@ -1,8 +1,10 @@
-package text
+package word
 
 import (
 	"strings"
 	"unicode"
+
+	"git.resultys.com.br/lib/text/extract"
 
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
@@ -20,6 +22,7 @@ func New(word string) *Word {
 }
 
 // IsLike retorna se duas palavras são semelhantes
+// Retorna boolean
 func (w *Word) IsLike(text string) bool {
 	return similar(w.text, text) >= w.degree
 }
@@ -95,6 +98,7 @@ func removeTrash(word string) string {
 
 // RemoveAcentos remove acentos da string
 func RemoveAcentos(text string) string {
+	// Retorna string
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
 	n, _, _ := transform.String(t, text)
 
@@ -102,6 +106,14 @@ func RemoveAcentos(text string) string {
 }
 
 // RemoveAcentos remove acentos da string
+// Retorna string
 func (w *Word) RemoveAcentos() string {
 	return RemoveAcentos(w.text)
+}
+
+// OnlyNumber extrai todos os numeros do texto
+// Retorna string
+func (w *Word) OnlyNumber() string {
+	arr := extract.New(w.text).Regex(`[0-9]+`).ToArray()
+	return strings.Join(arr, "")
 }
