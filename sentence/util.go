@@ -7,10 +7,10 @@ import (
 
 func clean(text string) string {
 	t := strings.ToUpper(text)
-	t = strings.Trim(text, " ")
-	t = RemoveAcentos(text)
-	t = removeTrash(text)
-	t = strings.ToUpper(text)
+	t = strings.Trim(t, " ")
+	t = RemoveAcentos(t)
+	t = removeTrash(t)
+	t = strings.ToUpper(t)
 
 	return t
 }
