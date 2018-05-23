@@ -18,6 +18,13 @@ func New(text string) *Sentence {
 	return &Sentence{text, 0.66}
 }
 
+// SetDegree ...
+func (s *Sentence) SetDegree(d float32) *Sentence {
+	s.degree = d
+
+	return s
+}
+
 // RemoveAcentos remove acentos da string
 func RemoveAcentos(text string) string {
 	// Retorna string

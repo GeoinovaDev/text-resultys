@@ -20,8 +20,9 @@ func isMn(r rune) bool {
 }
 
 func removeTrash(word string) string {
-	w := strings.Replace(word, ".", "", -1)
+	w := strings.Replace(word, ".", " ", -1)
 
+	w = strings.Replace(w, "&", "E", -1)
 	w = strings.Replace(w, " DA ", "", -1)
 	w = strings.Replace(w, " DE ", "", -1)
 	w = strings.Replace(w, " DO ", "", -1)
@@ -33,7 +34,8 @@ func removeTrash(word string) string {
 	w = strings.Replace(w, "EPP", "", -1)
 	w = strings.Replace(w, "EIRELI", "", -1)
 
-	w = strings.Replace(w, "-", "", -1)
+	w = strings.Replace(w, "-", " ", -1)
+	w = strings.Replace(w, "+", " ", -1)
 	w = strings.Replace(w, `"`, "", -1)
 	w = strings.Replace(w, `'`, "", -1)
 	w = strings.Replace(w, `/`, "", -1)
