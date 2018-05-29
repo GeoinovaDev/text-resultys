@@ -6,14 +6,13 @@ import (
 
 // IsInner ...
 func (s *Sentence) IsInner(text string) bool {
-	sentence := clean(s.text)
 	text = clean(text)
 
-	if len(sentence) == 0 || len(text) == 0 {
+	if len(s.raw) == 0 || len(text) == 0 {
 		return false
 	}
 
-	p := strings.Split(sentence, " ")
+	p := strings.Split(s.raw, " ")
 	count := 0
 	for i := 0; i < len(p); i++ {
 		if !isValidWord(p[i]) {
