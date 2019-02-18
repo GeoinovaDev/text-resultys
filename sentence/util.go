@@ -23,9 +23,9 @@ func removeTrash(word string) string {
 	w := strings.Replace(word, ".", " ", -1)
 
 	w = strings.Replace(w, "&", "E", -1)
-	w = strings.Replace(w, " DA ", "", -1)
-	w = strings.Replace(w, " DE ", "", -1)
-	w = strings.Replace(w, " DO ", "", -1)
+	w = strings.Replace(w, " DA ", " ", -1)
+	w = strings.Replace(w, " DE ", " ", -1)
+	w = strings.Replace(w, " DO ", " ", -1)
 
 	w = strings.Replace(w, "- ME", "", -1)
 	w = strings.Replace(w, "LTDA", "", -1)
