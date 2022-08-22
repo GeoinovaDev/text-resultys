@@ -3,7 +3,7 @@ package sentence
 import (
 	"strings"
 
-	"git.resultys.com.br/lib/text"
+	"github.com/GeoinovaDev/text-resultys"
 
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"

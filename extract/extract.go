@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"git.resultys.com.br/lib/lower/convert/decode"
+	"github.com/GeoinovaDev/lower-resultys/convert/decode"
 )
 
 // Extract estrutura para clip de texto

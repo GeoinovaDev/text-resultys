@@ -3,7 +3,7 @@ package text
 import (
 	"strings"
 
-	"git.resultys.com.br/lib/text/extract"
+	"github.com/GeoinovaDev/text-resultys/extract"
 )
 
 // OnlyNumbers remove tudo que nao for numero do texto
